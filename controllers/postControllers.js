@@ -42,8 +42,9 @@ const destroy = (req, res) => {
         return res.status(404).json({ error: 'Post not found' });
     }
 
-    posts.splice(thisPost, 1);
-    res.status(204).json({ message: `Post numero ${postId} eliminato con successo` });
+    const index = posts.indexOf(thisPost);
+    posts.splice(index, 1);
+    res.status(200).json({ message: `Post numero ${postId} eliminato con successo` });
     console.log(posts);
 
 };

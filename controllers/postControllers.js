@@ -36,14 +36,16 @@ const patch = (req, res) => {
 // DELETE DI UN POST ESISTENTE
 const destroy = (req, res) => {
     const postId = parseInt(req.params.id);
-    const thisPost = posts.findIndex(post => post.id === postId);
+    const thisPost = posts.find(post => post.id === postId);
 
     if (!thisPost) {
         return res.status(404).json({ error: 'Post not found' });
     }
 
     posts.splice(thisPost, 1);
-    res.json({ message: 'Post eliminato con successo' });
+    res.status(204).json({ message: `Post numero ${postId} eliminato con successo` });
+    console.log(posts);
+
 };
 
 

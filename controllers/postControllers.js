@@ -2,9 +2,17 @@ const posts = require('../data/posts');
 
 // INDEX DEI POST
 const index = (req, res) => {
-    res.json(posts);
-    console.log(posts);
-};
+    const { tag } = req.query;
+
+    if (tag) {
+        // filter the posts that contain the tag
+        const filteredPosts = posts.filter(post => post.tags.includes(tag));
+        return res.json(filteredPosts);
+    }
+
+    return res.json(posts);
+}
+
 
 // SHOW DI UN SINGOLO POST
 const show = (req, res) => {

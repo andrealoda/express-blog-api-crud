@@ -31,7 +31,7 @@ const store = (req, res) => {
     res.json({ message: 'Creazione di un nuovo post' });
 };
 
-// UPDATE DI UN POST ESISTENTE
+// UPDATE DI UN POST ESISTENTE // PUT
 const update = (req, res) => {
     res.json({ message: "Aggiornamento del post by id" });
 };

@@ -42,12 +42,29 @@ const store = (req, res) => {
 
 // UPDATE DI UN POST ESISTENTE // PUT
 const update = (req, res) => {
-    res.json({ message: "Aggiornamento del post by id" });
+    const postId = parseInt(req.params.id);
+
+    const thisPost = posts.find(post => post.id === postId);
+
+    if (!thisPost) {
+        return res.status(404).json({ error: 'Post not found' });
+    }
+
+    thisPost.title = req.body.title || thisPost.title;
+    thisPost.content = req.body.content || thisPost.content;
+    thisPost.image = req.body.image || thisPost.image;
+    thisPost.tags = req.body.tags || thisPost.tags;
+
+
+    console.log(posts);
+    res.json(thisPost);
 };
 
 // MODIFICA DI UN POST ESISTENTE
 const patch = (req, res) => {
-    res.json({ message: "Modifica del post by id" });
+
+    res.json({ message: "Patch a pizza by id" });
+
 };
 
 // DELETE DI UN POST ESISTENTE

@@ -28,7 +28,16 @@ const show = (req, res) => {
 
 // STORE DI UN NUOVO POST
 const store = (req, res) => {
-    res.json({ message: 'Creazione di un nuovo post' });
+    const newId = posts[posts.length - 1].id + 1;
+    const newPost = {
+        id: newId,
+        ...req.body
+    }
+
+    posts.push(newPost);
+    res.status(201).json(newPost);
+    console.log(posts);
+
 };
 
 // UPDATE DI UN POST ESISTENTE // PUT

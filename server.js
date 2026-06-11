@@ -17,7 +17,7 @@ app.listen(port, () => {
 });
 
 app.get('/', (req, res) => {
-    // app.error('test error')
+    // app.error(' 500 test error')
     res.json({ message: 'Benvenuto nel mio blog!' });
 });
 

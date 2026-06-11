@@ -4,7 +4,9 @@ const router = express.Router();
 const postControllers = require('../controllers/postControllers');
 
 // CONTROLLERS
-router.get('/', postControllers.index);
+router.get('/', (req, res, next) => {
+  console.log('GET request to the homepage'); next();
+}, postControllers.index);
 router.get('/:id', postControllers.show);
 router.post('/', postControllers.store);
 router.put('/:id', postControllers.update);

@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const port = 3000;
 const postsRouter = require('./routers/posts');
+const serverError = require('./middlewares/serverError');
+const notFound = require('./middlewares/notFOund');
 
 app.use(express.static('public'));
 
@@ -15,5 +17,11 @@ app.listen(port, () => {
 });
 
 app.get('/', (req, res) => {
+    // app.error('test error')
     res.json({ message: 'Benvenuto nel mio blog!' });
 });
+
+
+app.use(serverError);
+
+app.use(notFound);
